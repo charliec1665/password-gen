@@ -130,6 +130,14 @@ var generatePassword = function () {
       result += characters.charAt(Math.floor(Math.random() * charactersLength));
     }
     return result;
+  } else if (confirmUppercase) {
+    var result = "";
+    var characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    var charactersLength = characters.length;
+    for (i = 0; i < promptLength; i++) {
+      result += characters.charAt(Math.floor(Math.random() * charactersLength));
+    }
+    return result;
   }
   console.log(generatePassword(promptLength));
 
