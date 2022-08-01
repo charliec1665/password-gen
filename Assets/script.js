@@ -66,6 +66,14 @@ var generatePassword = function () {
       result += characters.charAt(Math.floor(Math.random() * charactersLength));
     }
     return result;
+  } else if (confirmUppercase && confirmNumber && confirmSpecial) {
+    var result = "";
+    var characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!#$%&*+-./:;<>=?@^_";
+    var charactersLength = characters.length;
+    for (i = 0; i < promptLength; i++) {
+      result += characters.charAt(Math.floor(Math.random() * charactersLength));
+    }
+    return result;
   }
   
   
