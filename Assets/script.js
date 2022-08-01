@@ -1,6 +1,5 @@
 
 var generatePassword = function () {
-  debugger;
   //prompt user for length of password (>8 <128) using a window.prompt
   var promptLength = "";
  
