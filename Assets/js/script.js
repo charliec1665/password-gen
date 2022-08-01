@@ -5,7 +5,7 @@ var generatePassword = function () {
  
   //loop so if they enter an improper response, it will reprompt the user
   while (promptLength === "" || promptLength === null) {
-    promptLength = prompt("How long would you like your password to be? Must be longer than 8 characters.");
+    promptLength = prompt("How long would you like your password to be? Must be at least 8 characters.");
   }
 
   //conditional recursive function call
@@ -156,8 +156,6 @@ var generatePassword = function () {
   console.log(generatePassword(promptLength));
 
 }
-
-
 
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
