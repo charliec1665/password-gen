@@ -74,10 +74,7 @@ var generatePassword = function () {
       result += characters.charAt(Math.floor(Math.random() * charactersLength));
     }
     return result;
-  }
-  
-  
-  else if (confirmLowercase && confirmUppercase) {
+  } else if (confirmLowercase && confirmUppercase) {
     var result = "";
     var characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
     var charactersLength = characters.length;
@@ -85,15 +82,23 @@ var generatePassword = function () {
       result += characters.charAt(Math.floor(Math.random() * charactersLength));
     }
     return result;
-  } else if (confirmUppercase && !confirmLowercase) {
+  } else if (confirmLowercase && confirmNumber) {
     var result = "";
-    var characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    var characters = "abcdefghijklmnopqrstuvwxyz0123456789";
     var charactersLength = characters.length;
     for (i = 0; i < promptLength; i++) {
       result += characters.charAt(Math.floor(Math.random() * charactersLength));
     }
     return result;
-  } 
+  } else if (confirmLowercase && confirmSpecial) {
+    var result = "";
+    var characters = "abcdefghijklmnopqrstuvwxyz!#$%&*+-./:;<>=?@^_";
+    var charactersLength = characters.length;
+    for (i = 0; i < promptLength; i++) {
+      result += characters.charAt(Math.floor(Math.random() * charactersLength));
+    }
+    return result;
+  }
   console.log(generatePassword(promptLength));
 
 }
