@@ -5,9 +5,11 @@ var numeric = ['1', '2', '3', '4', '5', '6', '7', '8', '9'];
 var special = ['!', '#', '$', '%', '&', '*', '+', '-', '.', '/', ':', ';', '<', '>', '=', '?', '@', '^', '_'];
 
 var generatePassword = function () {
+  debugger;
   //prompt user for length of password (>8 <128) using a window.prompt
   var promptLength = "";
-
+ 
+  //loop so if they enter an improper response, it will reprompt the user
   while (promptLength === "" || promptLength === null) {
     promptLength = prompt("How long would you like your password to be? Must be longer than 8 characters.");
   }
@@ -23,41 +25,44 @@ var generatePassword = function () {
 
   //prompt user whether they would like to include lowercase characters
   var confirmLowercase = window.confirm("Would you like to include lowercase characters?");
-
+  //prompt user whether they would like to include uppercase characters
   var confirmUppercase = window.confirm("Would you like to include uppercase characters?");
+  //prompt user whether they would like to include numeric characters
+  var confirmNumber = window.confirm("Would you like to include numeric characters?");
+  //prompt user whether they would like to include special characters
+  var confirmSpecial = window.confirm("Would you like to include special characters?");
 
-  if (confirmLowercase) {
-    var result = '';
-    var characters = 'abcdefghijklmnopqrstuv'
-    var charactersLength = promptLength;
-    for ( var i = 0; i < length; i++) {
+
+  //based on user selections, use randomization to go through their selected arrays and generate a password
+  if (confirmLowercase && !confirmUppercase) {
+    var result = "";
+    var characters = "abcdefghijklmnopqrstuvwxyz";
+    var charactersLength = characters.length;
+    for (i = 0; i < promptLength; i++) {
       result += characters.charAt(Math.floor(Math.random() * charactersLength));
     }
     return result;
   } else if (confirmLowercase && confirmUppercase) {
-    var result = '';
-    var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuv'
-    var charactersLength = promptLength;
-    for ( var i = 0; i < length; i++) {
+    var result = "";
+    var characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+    var charactersLength = characters.length;
+    for (i = 0; i < promptLength; i++) {
+      result += characters.charAt(Math.floor(Math.random() * charactersLength));
+    }
+    return result;
+  } else if (confirmUppercase && !confirmLowercase) {
+    var result = "";
+    var characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    var charactersLength = characters.length;
+    for (i = 0; i < promptLength; i++) {
       result += characters.charAt(Math.floor(Math.random() * charactersLength));
     }
     return result;
   }
-  
-  else {
-    window.alert("Your password must include at least one type of character.");
-  }
-
-  //prompt user whether they would like to include uppercase characters
-
-  //prompt user whether they would like to include numeric characters
-
-  //prompt user whether they would like to include special characters
-
-  //based on user selections, use randomization to go through their selected arrays and generate a password
-
   console.log(generatePassword(promptLength));
+
 }
+
 
 
 // Assignment Code
