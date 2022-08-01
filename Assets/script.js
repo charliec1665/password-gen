@@ -146,6 +146,14 @@ var generatePassword = function () {
       result += characters.charAt(Math.floor(Math.random() * charactersLength));
     }
     return result;
+  } else if (confirmSpecial) {
+    var result = "";
+    var characters = "!#$%&*+-./:;<>=?@^_";
+    var charactersLength = characters.length;
+    for (i = 0; i < promptLength; i++) {
+      result += characters.charAt(Math.floor(Math.random() * charactersLength));
+    }
+    return result;
   }
   console.log(generatePassword(promptLength));
 
