@@ -13,9 +13,11 @@ https://charliec1665.github.io/password-gen/
 ## Usage
 
 Deploy the link. Provide your desired password length, and answer the prompts to select which types of characters you would like included in the password. 
+
 ![Screenshot of password generator page with prompt box](./assets/Screenshot1.png)
 
 Once you're finished, a randomized password will be displayed in the generator based on your input.
+
 ![Screenshot of password generator displaying a finalized password](./assets/Screenshot2.png)
 
 ## Credits
