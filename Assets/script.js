@@ -34,9 +34,25 @@ var generatePassword = function () {
 
 
   //based on user selections, use randomization to go through their selected arrays and generate a password
-  if (confirmLowercase && !confirmUppercase) {
+  if (confirmLowercase && confirmUppercase && confirmNumber && confirmSpecial) {
     var result = "";
-    var characters = "abcdefghijklmnopqrstuvwxyz";
+    var characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!#$%&*+-./:;<>=?@^_";
+    var charactersLength = characters.length;
+    for (i = 0; i < promptLength; i++) {
+      result += characters.charAt(Math.floor(Math.random() * charactersLength));
+    }
+    return result;
+  } else if (confirmLowercase && confirmUppercase && confirmNumber) {
+    var result = "";
+    var characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+    var charactersLength = characters.length;
+    for (i = 0; i < promptLength; i++) {
+      result += characters.charAt(Math.floor(Math.random() * charactersLength));
+    }
+    return result;
+  } else if (confirmLowercase && confirmUppercase && confirmSpecial) {
+    var result = "";
+    var characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz!#$%&*+-./:;<>=?@^_";
     var charactersLength = characters.length;
     for (i = 0; i < promptLength; i++) {
       result += characters.charAt(Math.floor(Math.random() * charactersLength));
@@ -58,7 +74,7 @@ var generatePassword = function () {
       result += characters.charAt(Math.floor(Math.random() * charactersLength));
     }
     return result;
-  }
+  } 
   console.log(generatePassword(promptLength));
 
 }
