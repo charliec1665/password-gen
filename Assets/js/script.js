@@ -27,133 +27,35 @@ var generatePassword = function () {
   var confirmSpecial = window.confirm("Would you like to include special characters?");
 
 
-  //based on user selections, use randomization to go through their selected arrays and generate a password
-  if (confirmLowercase && confirmUppercase && confirmNumber && confirmSpecial) {
-    var result = "";
-    var characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!#$%&*+-./:;<>=?@^_";
-    var charactersLength = characters.length;
-    for (i = 0; i < promptLength; i++) {
-      result += characters.charAt(Math.floor(Math.random() * charactersLength));
-    }
-    return result;
-  } else if (confirmLowercase && confirmUppercase && confirmNumber) {
-    var result = "";
-    var characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-    var charactersLength = characters.length;
-    for (i = 0; i < promptLength; i++) {
-      result += characters.charAt(Math.floor(Math.random() * charactersLength));
-    }
-    return result;
-  } else if (confirmLowercase && confirmUppercase && confirmSpecial) {
-    var result = "";
-    var characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz!#$%&*+-./:;<>=?@^_";
-    var charactersLength = characters.length;
-    for (i = 0; i < promptLength; i++) {
-      result += characters.charAt(Math.floor(Math.random() * charactersLength));
-    }
-    return result;
-  } else if (confirmLowercase && confirmNumber && confirmSpecial) {
-    var result = "";
-    var characters = "abcdefghijklmnopqrstuvwxyz0123456789!#$%&*+-./:;<>=?@^_";
-    var charactersLength = characters.length;
-    for (i = 0; i < promptLength; i++) {
-      result += characters.charAt(Math.floor(Math.random() * charactersLength));
-    }
-    return result;
-  } else if (confirmUppercase && confirmNumber && confirmSpecial) {
-    var result = "";
-    var characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!#$%&*+-./:;<>=?@^_";
-    var charactersLength = characters.length;
-    for (i = 0; i < promptLength; i++) {
-      result += characters.charAt(Math.floor(Math.random() * charactersLength));
-    }
-    return result;
-  } else if (confirmLowercase && confirmUppercase) {
-    var result = "";
-    var characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
-    var charactersLength = characters.length;
-    for (i = 0; i < promptLength; i++) {
-      result += characters.charAt(Math.floor(Math.random() * charactersLength));
-    }
-    return result;
-  } else if (confirmLowercase && confirmNumber) {
-    var result = "";
-    var characters = "abcdefghijklmnopqrstuvwxyz0123456789";
-    var charactersLength = characters.length;
-    for (i = 0; i < promptLength; i++) {
-      result += characters.charAt(Math.floor(Math.random() * charactersLength));
-    }
-    return result;
-  } else if (confirmLowercase && confirmSpecial) {
-    var result = "";
-    var characters = "abcdefghijklmnopqrstuvwxyz!#$%&*+-./:;<>=?@^_";
-    var charactersLength = characters.length;
-    for (i = 0; i < promptLength; i++) {
-      result += characters.charAt(Math.floor(Math.random() * charactersLength));
-    }
-    return result;
-  } else if (confirmUppercase && confirmNumber) {
-    var result = "";
-    var characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-    var charactersLength = characters.length;
-    for (i = 0; i < promptLength; i++) {
-      result += characters.charAt(Math.floor(Math.random() * charactersLength));
-    }
-    return result;
-  } else if (confirmUppercase && confirmSpecial) {
-    var result = "";
-    var characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ!#$%&*+-./:;<>=?@^_";
-    var charactersLength = characters.length;
-    for (i = 0; i < promptLength; i++) {
-      result += characters.charAt(Math.floor(Math.random() * charactersLength));
-    }
-    return result;
-  } else if (confirmSpecial && confirmNumber) {
-    var result = "";
-    var characters = "0123456789!#$%&*+-./:;<>=?@^_";
-    var charactersLength = characters.length;
-    for (i = 0; i < promptLength; i++) {
-      result += characters.charAt(Math.floor(Math.random() * charactersLength));
-    }
-    return result;
-  } else if (confirmLowercase) {
-    var result = "";
-    var characters = "abcdefghijklmnopqrstuvwxyz";
-    var charactersLength = characters.length;
-    for (i = 0; i < promptLength; i++) {
-      result += characters.charAt(Math.floor(Math.random() * charactersLength));
-    }
-    return result;
-  } else if (confirmUppercase) {
-    var result = "";
-    var characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-    var charactersLength = characters.length;
-    for (i = 0; i < promptLength; i++) {
-      result += characters.charAt(Math.floor(Math.random() * charactersLength));
-    }
-    return result;
-  } else if (confirmNumber) {
-    var result = "";
-    var characters = "0123456789";
-    var charactersLength = characters.length;
-    for (i = 0; i < promptLength; i++) {
-      result += characters.charAt(Math.floor(Math.random() * charactersLength));
-    }
-    return result;
-  } else if (confirmSpecial) {
-    var result = "";
-    var characters = "!#$%&*+-./:;<>=?@^_";
-    var charactersLength = characters.length;
-    for (i = 0; i < promptLength; i++) {
-      result += characters.charAt(Math.floor(Math.random() * charactersLength));
-    }
-    return result;
-  } else {
-    window.alert("Please choose at least one set of characters.");
-    return generatePassword();
+  //based on user selections, reference arrays in strings object
+  var strings = {
+    lowercase: 'abcdefghijklmnopqrstuvwxyz',
+    uppercase: 'ABCDEFGHIJKLMNOPQRSTUVWXYZ',
+    numbers: '0123456789',
+    special: '!@#$%^&*-_'
   }
 
-  console.log(generatePassword(promptLength));
+  // function to add characters to string
+  const determineRandomizationString = () => {
+    var randomizationString = "";
+    // check each condition and add to the string if the condition is true
+    if (confirmLowercase) randomizationString += strings.lowercase;
+    if (confirmUppercase) randomizationString += strings.uppercase;
+    if (confirmNumber) randomizationString += strings.numbers;
+    if (confirmSpecial) randomizationString += strings.special;
+    return randomizationString;
+  }
+
+  var result = "";
+  var characters = determineRandomizationString();
+  var charactersLength = characters.length;
+  // for loop to go through the arrays
+  for (i = 0; i < promptLength; i++) {
+    // equation to randomize the characters pulled from the arrays
+    result += characters.charAt(Math.floor(Math.random() * charactersLength));
+  }
+  
+  return result;
 
 }
 
