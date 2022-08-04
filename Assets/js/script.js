@@ -36,7 +36,7 @@ var generatePassword = function () {
   }
 
   // function to add characters to string
-  const determineRandomizationString = () => {
+  var determineRandomizationString = () => {
     var randomizationString = "";
     // check each condition and add to the string if the condition is true
     if (confirmLowercase) randomizationString += strings.lowercase;
@@ -51,7 +51,7 @@ var generatePassword = function () {
   var charactersLength = characters.length;
   // for loop to go through the arrays
   for (i = 0; i < promptLength; i++) {
-    // equation to randomize the characters pulled from the arrays
+    // equation to randomize the characters pulled from the arrays and append them
     result += characters.charAt(Math.floor(Math.random() * charactersLength));
   }
   
